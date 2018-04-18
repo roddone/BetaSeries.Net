@@ -6,9 +6,11 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
-    [Rest(Url = "badges/badge")]
-    public class Badge : DynamicObject
+    public abstract class BADGES
     {
-
+        [Rest]
+        public class Badge : IRest<Badge>
+        {
+        }
     }
 }

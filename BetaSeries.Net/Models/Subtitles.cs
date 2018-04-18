@@ -4,27 +4,27 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Subtitles
-	{
+    public abstract class SUBTITLES
+    {
 
 
-		[Rest]
-		public class Episode : DynamicObject {}
+        [Rest]
+        public class Episode : IRest<Episode> { }
 
 
-		[Rest]
-		public class Last : DynamicObject {}
+        [Rest]
+        public class Last : IRest<Last> { }
 
 
-		[Rest]
-		public class Report : DynamicObject {}
+        [Rest]
+        public class Report : IRest<Report> { }
 
 
-		[Rest]
-		public class Season : DynamicObject {}
+        [Rest]
+        public class Season : IRest<Season> { }
 
 
-		[Rest]
-		public class Show : DynamicObject {}
-	}
+        [Rest]
+        public class Show : IRest<Show> { }
+    }
 }

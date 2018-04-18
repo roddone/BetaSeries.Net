@@ -4,11 +4,11 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Seasons
+    public abstract class SEASONS
 	{
 
 
 		[Rest]
-		public class Watched : DynamicObject {}
+		public class Watched : IRest<Watched> {}
 	}
 }

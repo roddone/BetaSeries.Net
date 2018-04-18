@@ -6,21 +6,21 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
-    public class Friends
+    public abstract class FRIENDS
     {
         [Rest]
-        public class Block : DynamicObject { }
+        public class Block : IRest<Block> { }
 
         [Rest]
-        public class Find : DynamicObject{ }
+        public class Find : IRest<Find> { }
 
         [Rest]
-        public class Friend: DynamicObject { }
+        public class Friend : IRest<Friend> { }
 
         [Rest]
-        public class List : DynamicObject { }
+        public class List : IRest<List> { }
 
         [Rest]
-        public class Requests : DynamicObject { }
+        public class Requests : IRest<Requests> { }
     }
 }

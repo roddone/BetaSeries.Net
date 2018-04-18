@@ -4,15 +4,15 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Polls
+    public abstract class POLLS
 	{
 
 
 		[Rest]
-		public class Answer : DynamicObject {}
+		public class Answer : IRest<Answer> {}
 
 
 		[Rest]
-		public class Last : DynamicObject {}
+		public class Last : IRest<Last> {}
 	}
 }

@@ -4,35 +4,35 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Pictures
+    public abstract class PICTURES
 	{
 
 
 		[Rest]
-		public class Badges : DynamicObject {}
+		public class Badges : IRest<Badges> {}
 
 
 		[Rest]
-		public class Characters : DynamicObject {}
+		public class Characters : IRest<Characters> {}
 
 
 		[Rest]
-		public class Episodes : DynamicObject {}
+		public class Episodes : IRest<Episodes> {}
 
 
 		[Rest]
-		public class Members : DynamicObject {}
+		public class Members : IRest<Members> {}
 
 
 		[Rest]
-		public class Movies : DynamicObject {}
+		public class Movies : IRest<Movies> {}
 
 
 		[Rest]
-		public class Seasons : DynamicObject {}
+		public class Seasons : IRest<Seasons> {}
 
 
 		[Rest]
-		public class Shows : DynamicObject {}
+		public class Shows : IRest<Shows> {}
 	}
 }

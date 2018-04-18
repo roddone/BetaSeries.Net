@@ -5,10 +5,10 @@ using System.Dynamic;
 namespace BetaSeries.Net.Models
 {
     [Rest(Url = "push/push")]
-	public class Push
+    public abstract class PUSH
 	{
 
 		[Rest]
-		public class Subscription : DynamicObject {}
+		public class Subscription : IRest<Subscription> {}
 	}
 }

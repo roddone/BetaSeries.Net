@@ -6,36 +6,36 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
-    public class Episodes
+    public abstract class EPISODES
     {
         [Rest]
-        public class Display: DynamicObject { }
+        public class Display: IRest<Display> { }
 
         [Rest]
-        public class Downloaded: DynamicObject { }
+        public class Downloaded: IRest<Downloaded> { }
 
         [Rest]
-        public class Hidden : DynamicObject { }
+        public class Hidden : IRest<Hidden> { }
 
         [Rest]
-        public class Latest : DynamicObject{ }
+        public class Latest : IRest<Latest>{ }
 
         [Rest]
-        public class List: DynamicObject { }
+        public class List: IRest<List> { }
 
         [Rest]
-        public class Next: DynamicObject { }
+        public class Next: IRest<Next> { }
 
         [Rest]
-        public class Note : DynamicObject { }
+        public class Note : IRest<Note> { }
 
         [Rest]
-        public class Scraper : DynamicObject { }
+        public class Scraper : IRest<Scraper> { }
 
         [Rest]
-        public class Search : DynamicObject { }
+        public class Search : IRest<Search> { }
 
         [Rest]
-        public class Watched : DynamicObject { }
+        public class Watched : IRest<Watched> { }
     }
 }

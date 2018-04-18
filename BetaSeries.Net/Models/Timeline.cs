@@ -4,31 +4,31 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Timeline
+	public abstract class TIMELINE
 	{
 
 
 		[Rest]
-		public class Event : DynamicObject {}
+		public class Event : IRest<Event> {}
 
 
 		[Rest]
-		public class Feed : DynamicObject {}
+		public class Feed : IRest<Feed>{}
 
 
 		[Rest]
-		public class Friends : DynamicObject {}
+		public class Friends : IRest<Friends> {}
 
 
 		[Rest]
-		public class Home : DynamicObject {}
+		public class Home : IRest<Home>{}
 
 
 		[Rest]
-		public class Member : DynamicObject {}
+		public class Member : IRest<Member>{}
 
 
 		[Rest]
-		public class Show : DynamicObject {}
+		public class Show : IRest<Show>{}
 	}
 }

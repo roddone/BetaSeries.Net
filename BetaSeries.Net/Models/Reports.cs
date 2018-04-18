@@ -4,15 +4,15 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Reports
+    public abstract class REPORTS
 	{
 
 
 		[Rest]
-		public class Report : DynamicObject {}
+		public class Report : IRest<Report> {}
 
 
 		[Rest]
-		public class Update : DynamicObject {}
+		public class Update : IRest<Update> {}
 	}
 }

@@ -7,10 +7,11 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using BetaSeries.Net.Exceptions;
+using BetaSeries.Net.Models;
 
 namespace BetaSeries.Net
 {
-    public class RestHelper
+    public static class RestHelper
     {
         private static string _apiBaseUri = "https://api.betaseries.com/";
         private static string _apiVersion = "3.0";
@@ -25,9 +26,7 @@ namespace BetaSeries.Net
 
             typeof(RestHelper).Assembly.GetTypes().ToList().ForEach(t =>
             {
-                RestAttribute attr = t.GetCustomAttributes(restAttributeType, false)?.FirstOrDefault() as RestAttribute;
-
-                if (attr != null)
+                if (t.GetCustomAttributes(restAttributeType, false)?.FirstOrDefault() is RestAttribute attr)
                 {
                     if (!string.IsNullOrWhiteSpace(attr.Url))
                     {
@@ -43,12 +42,12 @@ namespace BetaSeries.Net
             });
         }
 
-        public void RegisterDeveloperKey(string key)
+        public static void RegisterDeveloperKey(string key)
         {
             _developerKey = key;
         }
 
-        public async Task<dynamic> Get<T>() where T : class
+        public static async Task<dynamic> Get<T>(dynamic parameters = null) where T : class
         {
             if (string.IsNullOrWhiteSpace(_developerKey))
             {
@@ -63,12 +62,147 @@ namespace BetaSeries.Net
                 client.DefaultRequestHeaders.Add("X-BetaSeries-Key", _developerKey);
                 client.DefaultRequestHeaders.Add("X-BetaSeries-Version", _apiVersion);
 
+                //add usertoken
                 if (_userToken != null)
                 {
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_userToken}");
                 }
 
-                using (HttpResponseMessage result = await client.GetAsync($"{url}"))//? id ={UserId}"))
+                //add parameters
+                url += DynamicToQueryString(parameters);
+
+                //request
+                using (HttpResponseMessage result = await client.GetAsync($"{url}"))
+                {
+                    if (result.IsSuccessStatusCode)
+                    {
+                        string resultAsString = await result.Content.ReadAsStringAsync();
+                        return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static string DynamicToQueryString(dynamic d)
+        {
+            if (d != null)
+            {
+                string output = "?";
+                List<string> parameters = new List<string>();
+
+                foreach (var prop in d.GetType().GetProperties())
+                {
+                    string propName = prop.Name;
+                    object value = prop.GetValue(d, null);
+                    parameters.Add($"{propName}={value.ToString()}");
+                }
+
+                output += string.Join("&", parameters);
+
+                return output;
+            }
+
+            return string.Empty;
+        }
+
+        public static async Task<dynamic> Post<T>(Parameters parameters) where T : class
+        {
+            if (string.IsNullOrWhiteSpace(_developerKey))
+            {
+                throw new NoDeveloperKeyException();
+            }
+
+            string url = GetUrlOrThrow(typeof(T));
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_apiBaseUri);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Key", _developerKey);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Version", _apiVersion);
+
+                //add usertoken
+                if (_userToken != null)
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_userToken}");
+                }
+
+                //request
+                using (HttpResponseMessage result = await client.PostAsJsonAsync($"{url}", parameters))
+                {
+                    if (result.IsSuccessStatusCode)
+                    {
+                        string resultAsString = await result.Content.ReadAsStringAsync();
+                        return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public static async Task<dynamic> Put<T>( Parameters parameters) where T : class
+        {
+            if (string.IsNullOrWhiteSpace(_developerKey))
+            {
+                throw new NoDeveloperKeyException();
+            }
+
+            string url = GetUrlOrThrow(typeof(T));
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_apiBaseUri);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Key", _developerKey);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Version", _apiVersion);
+
+                //add usertoken
+                if (_userToken != null)
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_userToken}");
+                }
+
+                //request
+                using (HttpResponseMessage result = await client.PutAsJsonAsync($"{url}", parameters))
+                {
+                    if (result.IsSuccessStatusCode)
+                    {
+                        string resultAsString = await result.Content.ReadAsStringAsync();
+                        return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public static async Task<dynamic> Delete<T>(Parameters parameters) where T : class
+        {
+            if (string.IsNullOrWhiteSpace(_developerKey))
+            {
+                throw new NoDeveloperKeyException();
+            }
+
+            string url = GetUrlOrThrow(typeof(T));
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_apiBaseUri);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Key", _developerKey);
+                client.DefaultRequestHeaders.Add("X-BetaSeries-Version", _apiVersion);
+
+                //add usertoken
+                if (_userToken != null)
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_userToken}");
+                }
+
+                //add parameters
+                url += (parameters as Parameters).ToString();
+
+                //request
+                using (HttpResponseMessage result = await client.DeleteAsync($"{url}"))
                 {
                     if (result.IsSuccessStatusCode)
                     {

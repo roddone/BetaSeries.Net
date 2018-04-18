@@ -6,13 +6,18 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
-    [Rest(Url = "comments/comments")]
-    public class Comments : DynamicObject
+    public abstract class COMMENTS
     {
-        public class Comment : DynamicObject { }
+        [Rest]
+        public class Comment:IRest<Comment> { }
 
-        public class Replies : List<Comment> { }
+        [Rest]
+        public class Comments: IRest<Comments> { }
 
-        public class Subscription : DynamicObject { }
+        [Rest]
+        public class Replies: IRest<Replies> { }
+
+        [Rest]
+        public class Subscription: IRest<Subscription> { }
     }
 }

@@ -4,22 +4,22 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Messages
+    public abstract class MESSAGES
 	{
 
 
 		[Rest]
-		public class Discussion : DynamicObject {}
+		public class Discussion : IRest<Discussion> {}
 
 
 		[Rest]
-		public class Inbox : DynamicObject {}
+		public class Inbox : IRest<Inbox> {}
 
 
 		[Rest]
-		public class Message : DynamicObject {}
+		public class Message : IRest<Message> {}
 
 		[Rest]
-		public class Read : DynamicObject {}
+		public class Read : IRest<Read> {}
 	}
 }

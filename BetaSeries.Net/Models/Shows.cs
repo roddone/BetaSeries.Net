@@ -6,66 +6,66 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
-    public class Shows
+    public abstract class SHOWS
     {
         [Rest]
-        public class Archive: DynamicObject { }
+        public class Archive : IRest<Archive> { }
 
         [Rest]
-        public class Characters: DynamicObject { }
+        public class Characters : IRest<Characters> { }
 
         [Rest]
-        public class Discover: DynamicObject { }
+        public class Discover : IRest<Discover> { }
 
         [Rest]
-        public class Display: DynamicObject { }
+        public class Display : IRest<Display> { }
 
         [Rest]
-        public class Episodes : DynamicObject { }
+        public class Episodes : IRest<Episodes> { }
 
         [Rest]
-        public class Favorite : DynamicObject { }
+        public class Favorite : IRest<Favorite> { }
 
         [Rest]
-        public class Genres : DynamicObject { }
+        public class Genres : IRest<Genres> { }
 
         [Rest]
-        public class List : DynamicObject { }
+        public class List : IRest<List> { }
 
         [Rest]
-        public class Member : DynamicObject { }
+        public class Member : IRest<Member> { }
 
         [Rest]
-        public class Note : DynamicObject { }
+        public class Note : IRest<Note> { }
 
         [Rest]
-        public class Pictures : DynamicObject { }
+        public class Pictures : IRest<Pictures> { }
 
         [Rest]
-        public class Posters : DynamicObject { }
+        public class Posters : IRest<Posters> { }
 
         [Rest]
-        public class Random : DynamicObject { }
+        public class Random : IRest<Random> { }
 
         [Rest]
-        public class Recommendation : DynamicObject { }
+        public class Recommendation : IRest<Recommendation> { }
 
         [Rest]
-        public class Recommendations : DynamicObject { }
+        public class Recommendations : IRest<Recommendations> { }
 
         [Rest]
-        public class Search : DynamicObject { }
+        public class Search : IRest<Search> { }
 
         [Rest]
-        public class Show : DynamicObject { }
+        public class Show : IRest<Show> { }
 
         [Rest]
-        public class Similars : DynamicObject { }
+        public class Similars : IRest<Similars> { }
 
         [Rest]
-        public class Tags : DynamicObject { }
+        public class Tags : IRest<Tags> { }
 
         [Rest]
-        public class Videos : DynamicObject { }
+        public class Videos : IRest<Videos> { }
     }
 }

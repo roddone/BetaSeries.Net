@@ -4,11 +4,11 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Search
+    public abstract class SEARCH
 	{
 
 
 		[Rest]
-		public class All : DynamicObject {}
+		public class All : IRest<All> {}
 	}
 }

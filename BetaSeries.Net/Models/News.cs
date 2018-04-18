@@ -4,11 +4,11 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class News
+    public abstract class NEWS
 	{
 
 
 		[Rest]
-		public class Last : DynamicObject {}
+		public class Last : IRest<Last> {}
 	}
 }

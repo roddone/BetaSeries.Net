@@ -4,59 +4,59 @@ using System.Dynamic;
 
 namespace BetaSeries.Net.Models
 {
-	public class Movies
+    public abstract class MOVIES
 	{
 
 
 		[Rest]
-		public class Characters : DynamicObject {}
+		public class Characters : IRest<Characters> {}
 
 
 		[Rest]
-		public class Discover : DynamicObject {}
+		public class Discover : IRest<Discover> {}
 
 
 		[Rest]
-		public class Favorite : DynamicObject {}
+		public class Favorite : IRest<Favorite> {}
 
 
 		[Rest]
-		public class Favorites : DynamicObject {}
+		public class Favorites : IRest<Favorites> {}
 
 
 		[Rest]
-		public class List : DynamicObject {}
+		public class List : IRest<List> {}
 
 
 		[Rest]
-		public class Member : DynamicObject {}
+		public class Member : IRest<Member> {}
 
 
 		[Rest]
-		public class Movie : DynamicObject {}
+		public class Movie : IRest<Movie> {}
 
 
 		[Rest]
-		public class Note : DynamicObject {}
+		public class Note : IRest<Note> {}
 
 
 		[Rest]
-		public class Random : DynamicObject {}
+		public class Random : IRest<Random> {}
 
 
 		[Rest]
-		public class Scraper : DynamicObject {}
+		public class Scraper : IRest<Scraper> {}
 
 
 		[Rest]
-		public class Search : DynamicObject {}
+		public class Search : IRest<Search> {}
 
 
 		[Rest]
-		public class Similars : DynamicObject {}
+		public class Similars : IRest<Similars> {}
 
 
 		[Rest]
-		public class Upcoming : DynamicObject {}
+		public class Upcoming : IRest<Upcoming> {}
 	}
 }
