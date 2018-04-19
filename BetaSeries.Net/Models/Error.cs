@@ -4,6 +4,11 @@ using System.Text;
 
 namespace BetaSeries.Net.Models
 {
+    public class ErrorResponse
+    {
+        public List<Error> Errors { get; set; }
+    }
+
     public class Error
     {
         public ErrorCode Code { get; set; }

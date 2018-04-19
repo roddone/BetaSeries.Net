@@ -79,10 +79,22 @@ namespace BetaSeries.Net
                 //request
                 using (HttpResponseMessage result = await client.GetAsync($"{url}"))
                 {
+                    string resultAsString = await result.Content.ReadAsStringAsync();
+
                     if (result.IsSuccessStatusCode)
                     {
-                        string resultAsString = await result.Content.ReadAsStringAsync();
                         return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                    else
+                    {
+                        ErrorResponse errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(resultAsString);
+
+                        if (errorResponse != null)
+                        {
+                            throw new BetaSeriesException(errorResponse);
+                        }
+
+                        return errorResponse;
                     }
                 }
             }
@@ -114,15 +126,25 @@ namespace BetaSeries.Net
                 //request
                 using (HttpResponseMessage result = await HttpClientExtensions.PostAsJsonAsync(client, url, parameters))
                 {
+                    string resultAsString = await result.Content.ReadAsStringAsync();
+
                     if (result.IsSuccessStatusCode)
                     {
-                        string resultAsString = await result.Content.ReadAsStringAsync();
                         return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                    else
+                    {
+                        ErrorResponse errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(resultAsString);
+
+                        if (errorResponse != null)
+                        {
+                            throw new BetaSeriesException(errorResponse);
+                        }
+
+                        return errorResponse;
                     }
                 }
             }
-
-            return null;
         }
 
         public static async Task<dynamic> Put<T>(Parameters parameters) where T : class
@@ -149,10 +171,22 @@ namespace BetaSeries.Net
                 //request
                 using (HttpResponseMessage result = await HttpClientExtensions.PostAsJsonAsync(client, url, parameters))
                 {
+                    string resultAsString = await result.Content.ReadAsStringAsync();
+
                     if (result.IsSuccessStatusCode)
                     {
-                        string resultAsString = await result.Content.ReadAsStringAsync();
                         return JsonConvert.DeserializeObject(resultAsString);
+                    }
+                    else
+                    {
+                        ErrorResponse errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(resultAsString);
+
+                        if (errorResponse != null)
+                        {
+                            throw new BetaSeriesException(errorResponse);
+                        }
+
+                        return errorResponse;
                     }
                 }
             }
