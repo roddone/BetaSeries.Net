@@ -1,13 +1,11 @@
 ﻿using BetaSeries.Net.Core;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Text;
 
 namespace BetaSeries.Net.Models
 {
     public abstract class FRIENDS
     {
+        #region Public Classes
+
         [Rest]
         public class Block : IRest<Block> { }
 
@@ -22,5 +20,7 @@ namespace BetaSeries.Net.Models
 
         [Rest]
         public class Requests : IRest<Requests> { }
+
+        #endregion Public Classes
     }
 }

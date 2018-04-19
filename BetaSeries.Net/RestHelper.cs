@@ -1,23 +1,28 @@
 ﻿using BetaSeries.Net.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 using BetaSeries.Net.Exceptions;
 using BetaSeries.Net.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace BetaSeries.Net
 {
     public static class RestHelper
     {
+        #region Private Fields
+
         private static string _apiBaseUri = "https://api.betaseries.com/";
         private static string _apiVersion = "3.0";
         private static string _developerKey = null;
         private static Dictionary<Type, string> _urlByType = new Dictionary<Type, string>();
         private static string _userToken = null;
+
+        #endregion Private Fields
+
+        #region Public Constructors
 
         static RestHelper()
         {
@@ -38,18 +43,19 @@ namespace BetaSeries.Net
                         _urlByType.Add(t, t.FullName.Remove(0, t.Namespace.Length + 1).ToLower().Replace("+", "/"));
                     }
                 }
-
             });
         }
 
-        public static void RegisterDeveloperKey(string key)
-        {
-            _developerKey = key;
-        }
+        #endregion Public Constructors
 
-        public static void RegisterUserToken(string token)
+        #region Public Methods
+
+        public static async Task<dynamic> Delete<T>(dynamic parameters) where T : class
         {
-            _userToken = token;
+            string url = GetUrlOrThrow(typeof(T));
+            url += DynamicToQueryString(parameters);
+
+            return await Request<dynamic>(AllowedHttpVerbs.Delete, url, parameters);
         }
 
         public static async Task<dynamic> Get<T>(dynamic parameters = null) where T : class
@@ -74,12 +80,67 @@ namespace BetaSeries.Net
             return await Request<dynamic>(AllowedHttpVerbs.Put, url, parameters);
         }
 
-        public static async Task<dynamic> Delete<T>(dynamic parameters) where T : class
+        public static void RegisterDeveloperKey(string key)
         {
-            string url = GetUrlOrThrow(typeof(T));
-            url += DynamicToQueryString(parameters);
+            _developerKey = key;
+        }
 
-            return await Request<dynamic>(AllowedHttpVerbs.Delete, url, parameters);
+        public static void RegisterUserToken(string token)
+        {
+            _userToken = token;
+        }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private static Dictionary<string, object> DynamicToPostParam(dynamic d)
+        {
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+
+            foreach (var prop in d.GetType().GetProperties())
+            {
+                string propName = prop.Name;
+                object value = prop.GetValue(d, null);
+
+                dict.Add(propName, value);
+            }
+
+            return dict;
+        }
+
+        private static string DynamicToQueryString(dynamic d)
+        {
+            if (d != null)
+            {
+                string output = "?";
+                List<string> parameters = new List<string>();
+
+                foreach (var prop in d.GetType().GetProperties())
+                {
+                    string propName = prop.Name;
+                    object value = prop.GetValue(d, null);
+                    parameters.Add($"{propName}={value.ToString()}");
+                }
+
+                output += string.Join("&", parameters);
+
+                return output;
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetUrlOrThrow(Type type)
+        {
+            if (_urlByType.TryGetValue(type, out string url))
+            {
+                return url;
+            }
+            else
+            {
+                throw new RouteNotFoundException(type);
+            }
         }
 
         private static async Task<dynamic> Request<T>(AllowedHttpVerbs method, string url, dynamic parameters)
@@ -108,12 +169,15 @@ namespace BetaSeries.Net
                     case AllowedHttpVerbs.Delete:
                         result = await client.DeleteAsync($"{url}");
                         break;
+
                     case AllowedHttpVerbs.Get:
                         result = await client.GetAsync($"{url}");
                         break;
+
                     case AllowedHttpVerbs.Post:
                         result = await HttpClientExtensions.PostAsJsonAsync(client, url, parameters);
                         break;
+
                     case AllowedHttpVerbs.Put:
                         result = await HttpClientExtensions.PutAsJsonAsync(client, url, parameters);
                         break;
@@ -142,53 +206,6 @@ namespace BetaSeries.Net
             }
         }
 
-        private static string GetUrlOrThrow(Type type)
-        {
-            if (_urlByType.TryGetValue(type, out string url))
-            {
-                return url;
-            }
-            else
-            {
-                throw new RouteNotFoundException(type);
-            }
-        }
-        private static string DynamicToQueryString(dynamic d)
-        {
-            if (d != null)
-            {
-                string output = "?";
-                List<string> parameters = new List<string>();
-
-                foreach (var prop in d.GetType().GetProperties())
-                {
-                    string propName = prop.Name;
-                    object value = prop.GetValue(d, null);
-                    parameters.Add($"{propName}={value.ToString()}");
-                }
-
-                output += string.Join("&", parameters);
-
-                return output;
-            }
-
-            return string.Empty;
-        }
-
-        private static Dictionary<string, object> DynamicToPostParam(dynamic d)
-        {
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-
-            foreach (var prop in d.GetType().GetProperties())
-            {
-                string propName = prop.Name;
-                object value = prop.GetValue(d, null);
-
-                dict.Add(propName, value);
-            }
-
-            return dict;
-        }
-
+        #endregion Private Methods
     }
 }

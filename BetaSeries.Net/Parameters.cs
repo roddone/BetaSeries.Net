@@ -1,16 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Dynamic;
-using System.Text;
 
 namespace BetaSeries.Net
 {
     public class Parameters : DynamicObject
     {
+        #region Private Fields
+
         // The inner dictionary.
         private Dictionary<string, object> _dictionary = new Dictionary<string, object>();
 
-        // If you try to get a value of a property 
+        #endregion Private Fields
+
+        #region Public Methods
+
+        public override string ToString()
+        {
+            string output = "?";
+
+            foreach (var entry in _dictionary)
+            {
+                output += $"{entry.Key}={entry.Value}&";
+            }
+
+            return output;
+        }
+
+        // If you try to get a value of a property
         // not defined in the class, this method is called.
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
@@ -37,16 +53,6 @@ namespace BetaSeries.Net
             return true;
         }
 
-        public override string ToString()
-        {
-            string output = "?";
-
-            foreach(var entry in _dictionary)
-            {
-                output += $"{entry.Key}={entry.Value}&";
-            }
-
-            return output;
-        }
+        #endregion Public Methods
     }
 }

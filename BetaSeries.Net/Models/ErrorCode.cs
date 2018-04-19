@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BetaSeries.Net.Models
+﻿namespace BetaSeries.Net.Models
 {
     public enum ErrorCode
     {
@@ -61,6 +57,5 @@ namespace BetaSeries.Net.Models
         UserAlreadyExists = 4004
 
         #endregion Database errors
-
     }
 }

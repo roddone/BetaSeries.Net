@@ -1,14 +1,17 @@
 using BetaSeries.Net.Core;
-using System.Dynamic;
-
 
 namespace BetaSeries.Net.Models
 {
-    [Rest(Url = "push/push")]
     public abstract class PUSH
-	{
+    {
+        #region Public Classes
 
-		[Rest]
-		public class Subscription : IRest<Subscription> {}
-	}
+        [Rest]
+        public class Push : IRest<Push> { }
+
+        [Rest]
+        public class Subscription : IRest<Subscription> { }
+
+        #endregion Public Classes
+    }
 }

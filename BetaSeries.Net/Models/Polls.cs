@@ -1,18 +1,17 @@
 using BetaSeries.Net.Core;
-using System.Dynamic;
-
 
 namespace BetaSeries.Net.Models
 {
     public abstract class POLLS
-	{
+    {
+        #region Public Classes
 
+        [Rest]
+        public class Answer : IRest<Answer> { }
 
-		[Rest]
-		public class Answer : IRest<Answer> {}
+        [Rest]
+        public class Last : IRest<Last> { }
 
-
-		[Rest]
-		public class Last : IRest<Last> {}
-	}
+        #endregion Public Classes
+    }
 }

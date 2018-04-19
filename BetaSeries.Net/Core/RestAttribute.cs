@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BetaSeries.Net.Core
 {
     internal class RestAttribute : Attribute
     {
+        #region Public Properties
+
         public string Url { get; set; }
 
+        #endregion Public Properties
     }
 }

@@ -1,14 +1,19 @@
 ﻿using BetaSeries.Net.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace BetaSeries.Net.Exceptions
 {
     public class BetaSeriesException : Exception
     {
+        #region Public Properties
+
         public List<Error> BetaSeriesErrors { get; set; } = new List<Error>();
+
+        #endregion Public Properties
+
+        #region Public Constructors
 
         public BetaSeriesException(Error error) : base($"BetaSeries Error : {error?.Text} (Code : {error?.Code})")
         {
@@ -24,5 +29,7 @@ namespace BetaSeries.Net.Exceptions
         {
             BetaSeriesErrors.AddRange(error.Errors);
         }
+
+        #endregion Public Constructors
     }
 }

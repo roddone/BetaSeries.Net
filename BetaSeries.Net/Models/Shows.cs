@@ -1,13 +1,11 @@
 ﻿using BetaSeries.Net.Core;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Text;
 
 namespace BetaSeries.Net.Models
 {
     public abstract class SHOWS
     {
+        #region Public Classes
+
         [Rest]
         public class Archive : IRest<Archive> { }
 
@@ -67,5 +65,7 @@ namespace BetaSeries.Net.Models
 
         [Rest]
         public class Videos : IRest<Videos> { }
+
+        #endregion Public Classes
     }
 }

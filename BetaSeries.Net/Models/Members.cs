@@ -1,13 +1,11 @@
 ﻿using BetaSeries.Net.Core;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Text;
 
 namespace BetaSeries.Net.Models
 {
     public abstract class MEMBERS
     {
+        #region Public Classes
+
         [Rest]
         public class Access_token : IRest<Access_token> { }
 
@@ -76,5 +74,7 @@ namespace BetaSeries.Net.Models
 
         [Rest]
         public class UserName : IRest<UserName> { }
+
+        #endregion Public Classes
     }
 }
