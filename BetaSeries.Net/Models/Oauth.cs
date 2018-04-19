@@ -7,7 +7,7 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Access_token : IRest<Access_token> { }
+        public class Access_token : RestMethod<Access_token> { }
 
         #endregion Public Classes
     }

@@ -7,7 +7,7 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Watched : IRest<Watched> { }
+        public class Watched : RestMethod<Watched> { }
 
         #endregion Public Classes
     }

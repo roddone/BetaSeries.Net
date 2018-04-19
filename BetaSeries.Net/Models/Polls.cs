@@ -7,10 +7,10 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Answer : IRest<Answer> { }
+        public class Answer : RestMethod<Answer> { }
 
         [Rest]
-        public class Last : IRest<Last> { }
+        public class Last : RestMethod<Last> { }
 
         #endregion Public Classes
     }

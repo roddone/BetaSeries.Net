@@ -7,19 +7,19 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Episode : IRest<Episode> { }
+        public class Episode : RestMethod<Episode> { }
 
         [Rest]
-        public class Last : IRest<Last> { }
+        public class Last : RestMethod<Last> { }
 
         [Rest]
-        public class Report : IRest<Report> { }
+        public class Report : RestMethod<Report> { }
 
         [Rest]
-        public class Season : IRest<Season> { }
+        public class Season : RestMethod<Season> { }
 
         [Rest]
-        public class Show : IRest<Show> { }
+        public class Show : RestMethod<Show> { }
 
         #endregion Public Classes
     }

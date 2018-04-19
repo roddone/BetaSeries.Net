@@ -7,19 +7,19 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Calendar : IRest<Calendar> { }
+        public class Calendar : RestMethod<Calendar> { }
 
         [Rest]
-        public class General : IRest<General> { }
+        public class General : RestMethod<General> { }
 
         [Rest]
-        public class Incoming : IRest<Incoming> { }
+        public class Incoming : RestMethod<Incoming> { }
 
         [Rest]
-        public class Member : IRest<Member> { }
+        public class Member : RestMethod<Member> { }
 
         [Rest]
-        public class Timeline : IRest<Timeline> { }
+        public class Timeline : RestMethod<Timeline> { }
 
         #endregion Public Classes
     }

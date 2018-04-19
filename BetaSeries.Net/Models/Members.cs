@@ -7,73 +7,73 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Access_token : IRest<Access_token> { }
+        public class Access_token : RestMethod<Access_token> { }
 
         [Rest]
-        public class Auth : IRest<Auth> { }
+        public class Auth : RestMethod<Auth> { }
 
         [Rest]
-        public class Avatar : IRest<Avatar> { }
+        public class Avatar : RestMethod<Avatar> { }
 
         [Rest]
-        public class Badges : IRest<Badges> { }
+        public class Badges : RestMethod<Badges> { }
 
         [Rest]
-        public class Banner : IRest<Banner> { }
+        public class Banner : RestMethod<Banner> { }
 
         [Rest]
-        public class Destroy : IRest<Destroy> { }
+        public class Destroy : RestMethod<Destroy> { }
 
         [Rest]
-        public class Email : IRest<Email> { }
+        public class Email : RestMethod<Email> { }
 
         [Rest]
-        public class Facebook : IRest<Facebook> { }
+        public class Facebook : RestMethod<Facebook> { }
 
         [Rest]
-        public class Infos : IRest<Infos> { }
+        public class Infos : RestMethod<Infos> { }
 
         [Rest]
-        public class Is_Active : IRest<Is_Active> { }
+        public class Is_Active : RestMethod<Is_Active> { }
 
         [Rest]
-        public class LaMetric : IRest<LaMetric> { }
+        public class LaMetric : RestMethod<LaMetric> { }
 
         [Rest]
-        public class Locale : IRest<Locale> { }
+        public class Locale : RestMethod<Locale> { }
 
         [Rest]
-        public class Lost : IRest<Lost> { }
+        public class Lost : RestMethod<Lost> { }
 
         [Rest]
-        public class Notification : IRest<Notification> { }
+        public class Notification : RestMethod<Notification> { }
 
         [Rest]
-        public class Notifications : IRest<Notifications> { }
+        public class Notifications : RestMethod<Notifications> { }
 
         [Rest]
-        public class OAuth : IRest<OAuth> { }
+        public class OAuth : RestMethod<OAuth> { }
 
         [Rest]
-        public class Option : IRest<Option> { }
+        public class Option : RestMethod<Option> { }
 
         [Rest]
-        public class Options : IRest<Options> { }
+        public class Options : RestMethod<Options> { }
 
         [Rest]
-        public class Password : IRest<Password> { }
+        public class Password : RestMethod<Password> { }
 
         [Rest]
-        public class Search : IRest<Search> { }
+        public class Search : RestMethod<Search> { }
 
         [Rest]
-        public class Signup : IRest<Signup> { }
+        public class Signup : RestMethod<Signup> { }
 
         [Rest]
-        public class Sync : IRest<Sync> { }
+        public class Sync : RestMethod<Sync> { }
 
         [Rest]
-        public class UserName : IRest<UserName> { }
+        public class UserName : RestMethod<UserName> { }
 
         #endregion Public Classes
     }

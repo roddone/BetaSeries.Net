@@ -7,16 +7,16 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Comment : IRest<Comment> { }
+        public class Comment : RestMethod<Comment> { }
 
         [Rest]
-        public class Comments : IRest<Comments> { }
+        public class Comments : RestMethod<Comments> { }
 
         [Rest]
-        public class Replies : IRest<Replies> { }
+        public class Replies : RestMethod<Replies> { }
 
         [Rest]
-        public class Subscription : IRest<Subscription> { }
+        public class Subscription : RestMethod<Subscription> { }
 
         #endregion Public Classes
     }

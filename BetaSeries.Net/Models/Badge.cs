@@ -7,7 +7,7 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Badge : IRest<Badge>
+        public class Badge : RestMethod<Badge>
         {
         }
 

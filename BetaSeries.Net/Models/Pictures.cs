@@ -7,25 +7,25 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Badges : IRest<Badges> { }
+        public class Badges : RestMethod<Badges> { }
 
         [Rest]
-        public class Characters : IRest<Characters> { }
+        public class Characters : RestMethod<Characters> { }
 
         [Rest]
-        public class Episodes : IRest<Episodes> { }
+        public class Episodes : RestMethod<Episodes> { }
 
         [Rest]
-        public class Members : IRest<Members> { }
+        public class Members : RestMethod<Members> { }
 
         [Rest]
-        public class Movies : IRest<Movies> { }
+        public class Movies : RestMethod<Movies> { }
 
         [Rest]
-        public class Seasons : IRest<Seasons> { }
+        public class Seasons : RestMethod<Seasons> { }
 
         [Rest]
-        public class Shows : IRest<Shows> { }
+        public class Shows : RestMethod<Shows> { }
 
         #endregion Public Classes
     }

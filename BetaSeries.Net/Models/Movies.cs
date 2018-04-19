@@ -7,43 +7,43 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Characters : IRest<Characters> { }
+        public class Characters : RestMethod<Characters> { }
 
         [Rest]
-        public class Discover : IRest<Discover> { }
+        public class Discover : RestMethod<Discover> { }
 
         [Rest]
-        public class Favorite : IRest<Favorite> { }
+        public class Favorite : RestMethod<Favorite> { }
 
         [Rest]
-        public class Favorites : IRest<Favorites> { }
+        public class Favorites : RestMethod<Favorites> { }
 
         [Rest]
-        public class List : IRest<List> { }
+        public class List : RestMethod<List> { }
 
         [Rest]
-        public class Member : IRest<Member> { }
+        public class Member : RestMethod<Member> { }
 
         [Rest]
-        public class Movie : IRest<Movie> { }
+        public class Movie : RestMethod<Movie> { }
 
         [Rest]
-        public class Note : IRest<Note> { }
+        public class Note : RestMethod<Note> { }
 
         [Rest]
-        public class Random : IRest<Random> { }
+        public class Random : RestMethod<Random> { }
 
         [Rest]
-        public class Scraper : IRest<Scraper> { }
+        public class Scraper : RestMethod<Scraper> { }
 
         [Rest]
-        public class Search : IRest<Search> { }
+        public class Search : RestMethod<Search> { }
 
         [Rest]
-        public class Similars : IRest<Similars> { }
+        public class Similars : RestMethod<Similars> { }
 
         [Rest]
-        public class Upcoming : IRest<Upcoming> { }
+        public class Upcoming : RestMethod<Upcoming> { }
 
         #endregion Public Classes
     }

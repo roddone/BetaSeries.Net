@@ -7,19 +7,19 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Block : IRest<Block> { }
+        public class Block : RestMethod<Block> { }
 
         [Rest]
-        public class Find : IRest<Find> { }
+        public class Find : RestMethod<Find> { }
 
         [Rest]
-        public class Friend : IRest<Friend> { }
+        public class Friend : RestMethod<Friend> { }
 
         [Rest]
-        public class List : IRest<List> { }
+        public class List : RestMethod<List> { }
 
         [Rest]
-        public class Requests : IRest<Requests> { }
+        public class Requests : RestMethod<Requests> { }
 
         #endregion Public Classes
     }

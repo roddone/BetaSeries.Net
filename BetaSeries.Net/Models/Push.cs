@@ -7,10 +7,10 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Push : IRest<Push> { }
+        public class Push : RestMethod<Push> { }
 
         [Rest]
-        public class Subscription : IRest<Subscription> { }
+        public class Subscription : RestMethod<Subscription> { }
 
         #endregion Public Classes
     }

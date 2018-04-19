@@ -7,10 +7,10 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Report : IRest<Report> { }
+        public class Report : RestMethod<Report> { }
 
         [Rest]
-        public class Update : IRest<Update> { }
+        public class Update : RestMethod<Update> { }
 
         #endregion Public Classes
     }

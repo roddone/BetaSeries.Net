@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BetaSeries.Net.Models
 {
-    public abstract class IRest<T> : DynamicObject where T : class
+    public abstract class RestMethod<T> : DynamicObject where T : class
     {
         #region Public Methods
 

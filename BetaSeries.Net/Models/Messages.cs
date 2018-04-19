@@ -7,16 +7,16 @@ namespace BetaSeries.Net.Models
         #region Public Classes
 
         [Rest]
-        public class Discussion : IRest<Discussion> { }
+        public class Discussion : RestMethod<Discussion> { }
 
         [Rest]
-        public class Inbox : IRest<Inbox> { }
+        public class Inbox : RestMethod<Inbox> { }
 
         [Rest]
-        public class Message : IRest<Message> { }
+        public class Message : RestMethod<Message> { }
 
         [Rest]
-        public class Read : IRest<Read> { }
+        public class Read : RestMethod<Read> { }
 
         #endregion Public Classes
     }
