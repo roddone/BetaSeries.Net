@@ -47,6 +47,11 @@ namespace BetaSeries.Net
             _developerKey = key;
         }
 
+        public static void RegisterUserToken(string token)
+        {
+            _userToken = token;
+        }
+
         public static async Task<dynamic> Get<T>(dynamic parameters = null) where T : class
         {
             if (string.IsNullOrWhiteSpace(_developerKey))
@@ -85,29 +90,7 @@ namespace BetaSeries.Net
             return null;
         }
 
-        private static string DynamicToQueryString(dynamic d)
-        {
-            if (d != null)
-            {
-                string output = "?";
-                List<string> parameters = new List<string>();
-
-                foreach (var prop in d.GetType().GetProperties())
-                {
-                    string propName = prop.Name;
-                    object value = prop.GetValue(d, null);
-                    parameters.Add($"{propName}={value.ToString()}");
-                }
-
-                output += string.Join("&", parameters);
-
-                return output;
-            }
-
-            return string.Empty;
-        }
-
-        public static async Task<dynamic> Post<T>(Parameters parameters) where T : class
+        public static async Task<dynamic> Post<T>(dynamic parameters) where T : class
         {
             if (string.IsNullOrWhiteSpace(_developerKey))
             {
@@ -129,7 +112,7 @@ namespace BetaSeries.Net
                 }
 
                 //request
-                using (HttpResponseMessage result = await client.PostAsJsonAsync($"{url}", parameters))
+                using (HttpResponseMessage result = await HttpClientExtensions.PostAsJsonAsync(client, url, parameters))
                 {
                     if (result.IsSuccessStatusCode)
                     {
@@ -142,7 +125,7 @@ namespace BetaSeries.Net
             return null;
         }
 
-        public static async Task<dynamic> Put<T>( Parameters parameters) where T : class
+        public static async Task<dynamic> Put<T>(Parameters parameters) where T : class
         {
             if (string.IsNullOrWhiteSpace(_developerKey))
             {
@@ -164,7 +147,7 @@ namespace BetaSeries.Net
                 }
 
                 //request
-                using (HttpResponseMessage result = await client.PutAsJsonAsync($"{url}", parameters))
+                using (HttpResponseMessage result = await HttpClientExtensions.PostAsJsonAsync(client, url, parameters))
                 {
                     if (result.IsSuccessStatusCode)
                     {
@@ -226,5 +209,42 @@ namespace BetaSeries.Net
                 throw new RouteNotFoundException(type);
             }
         }
+        private static string DynamicToQueryString(dynamic d)
+        {
+            if (d != null)
+            {
+                string output = "?";
+                List<string> parameters = new List<string>();
+
+                foreach (var prop in d.GetType().GetProperties())
+                {
+                    string propName = prop.Name;
+                    object value = prop.GetValue(d, null);
+                    parameters.Add($"{propName}={value.ToString()}");
+                }
+
+                output += string.Join("&", parameters);
+
+                return output;
+            }
+
+            return string.Empty;
+        }
+
+        private static Dictionary<string, object> DynamicToPostParam(dynamic d)
+        {
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+
+            foreach (var prop in d.GetType().GetProperties())
+            {
+                string propName = prop.Name;
+                object value = prop.GetValue(d, null);
+
+                dict.Add(propName, value);
+            }
+
+            return dict;
+        }
+
     }
 }
