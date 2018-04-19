@@ -8,7 +8,7 @@ C# Wrapper to BetaSeries Rest API
 If you find this package useful, please make a gift on Paypal : [https://www.paypal.me/roddone](https://www.paypal.me/roddone)
 
 ## Pre-requisites
-You need to get a DeveloperKey to use the API. first, go to [https://www.betaseries.com/api/](BetaSeries API) to ask a key, then you can register the key in the application : 
+You need to get a DeveloperKey to use the API. first, go to [BetaSeries API](https://www.betaseries.com/api) to ask a key, then you can register the key in the application : 
 ```csharp 
 RestHelper.RegisterDeveloperKey("my-developer-key");
 ```
@@ -16,7 +16,7 @@ RestHelper.RegisterDeveloperKey("my-developer-key");
 ## Concept
 This wrapper is designed to be ultra generic and to have the less code as possible. To do that a lot of types used in the solution are dynamic.
 In a future releases, I will try to implement custom methods with strong-typed return types and inputs. But for now this API works and can be used with any method of the API.
-Have a look on [https://www.betaseries.com/api/](BetaSeries API) to know how to use the different API methods !
+Have a look on [BetaSeries API](https://www.betaseries.com/api) to know how to use the different API methods !
 
 ## How to use it
 BetaSeries API is based on a REST API, this package provides classes to access each entity of the API.
@@ -26,7 +26,7 @@ example: for SHOWS/DISPLAY, I will use :
 SHOWS.Display.[Delete|Get|Post|Put]();
 ```
 
-All the Urls works the same way, all you have to do is to have a look on [https://www.betaseries.com/api/](BetaSeries API) to find the Urls you need to call.
+All the Urls works the same way, all you have to do is to have a look on [BetaSeries API](https://www.betaseries.com/api) to find the Urls you need to call.
 
 ## Return types
 All methods returns (for now) a dynamic object that contains the API response. Feel free to implement strong-typed response types if you need to use real return types.
