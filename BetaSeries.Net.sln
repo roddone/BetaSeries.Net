@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaSeries.Net", "BetaSeries.Net\BetaSeries.Net.csproj", "{F1F27B87-DDA4-481F-ADD0-3E2B98A29857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaSeries.Net.CodeGenerator", "BetaSeries.Net.CodeGenerator\BetaSeries.Net.CodeGenerator.csproj", "{07BAD309-DBB9-4261-91FF-FD3D9B89F8B3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaSeries.Net.Console", "BetaSeries.Net.Console\BetaSeries.Net.Console.csproj", "{6EE8BAFB-4906-475F-9793-CC1BA0423437}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{F1F27B87-DDA4-481F-ADD0-3E2B98A29857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F27B87-DDA4-481F-ADD0-3E2B98A29857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F27B87-DDA4-481F-ADD0-3E2B98A29857}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07BAD309-DBB9-4261-91FF-FD3D9B89F8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07BAD309-DBB9-4261-91FF-FD3D9B89F8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07BAD309-DBB9-4261-91FF-FD3D9B89F8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07BAD309-DBB9-4261-91FF-FD3D9B89F8B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EE8BAFB-4906-475F-9793-CC1BA0423437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EE8BAFB-4906-475F-9793-CC1BA0423437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE8BAFB-4906-475F-9793-CC1BA0423437}.Release|Any CPU.ActiveCfg = Release|Any CPU
