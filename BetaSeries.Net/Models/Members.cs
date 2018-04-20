@@ -10,7 +10,17 @@ namespace BetaSeries.Net.Models
         public class Access_token : RestMethod<Access_token> { }
 
         [Rest]
-        public class Auth : RestMethod<Auth> { }
+        public class Auth : RestMethod<Auth>
+        {
+            public static async System.Threading.Tasks.Task<dynamic> Connect(string login, string password)
+            {
+                dynamic result = await Post(new { login, password = RestHelper.HashPassword(password) });
+
+                RestHelper.RegisterUserToken(result.token.ToString());
+
+                return result;
+            }
+        }
 
         [Rest]
         public class Avatar : RestMethod<Avatar> { }
