@@ -2,7 +2,27 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net47;net46;net45</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>0.0.1</Version>
+    <Description>Beta Series Rest API Wrapper</Description>
+    <Copyright>Copyright © Romain ODDONE 2018</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/roddone/BetaSeries.Net/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/roddone/BetaSeries.Net</PackageProjectUrl>
+    <RepositoryType>Github</RepositoryType>
+    <RepositoryUrl>https://github.com/roddone/YeelightAPI</RepositoryUrl>
+    <PackageTags>betaseries beta series c# .net</PackageTags>
+    <PackageReleaseNotes>initial version</PackageReleaseNotes>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Romain ODDONE</Authors>
+    <Company>Romain ODDONE</Company>
+    <Product>BetaSeries.Net</Product>
+    <PackageIconUrl>https://github.com/roddone/BetaSeries.Net/raw/master/BetaSeries.Net/icon.png</PackageIconUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.txt" Pack="true" PackagePath="." />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.4" />
