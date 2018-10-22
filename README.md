@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/roddone/BetaSeries.Net.svg?branch=master)](https://travis-ci.org/roddone/BetaSeries.Net)
+[![NuGet Package](https://img.shields.io/nuget/v/betaseries.net.svg)](https://www.nuget.org/packages/BetaSeries.net/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/betaseries.net.svg)](https://www.nuget.org/packages/BetaSeries.net/)
 [![Donate](https://img.shields.io/badge/%24-donate-ff00ff.svg)](https://www.paypal.me/roddone)
 
 # BetaSeries.Net
