@@ -55,6 +55,9 @@ namespace BetaSeries.Net.Models
         public class Search : RestMethod<Search> { }
 
         [Rest]
+        public class Seasons : RestMethod<Seasons> { }
+
+        [Rest]
         public class Show : RestMethod<Show> { }
 
         [Rest]
