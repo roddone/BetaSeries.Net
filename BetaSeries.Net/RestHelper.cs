@@ -19,6 +19,7 @@ namespace BetaSeries.Net
         private static string _apiBaseUri = "https://api.betaseries.com/";
         private static string _apiVersion = "3.0";
         private static string _developerKey = null;
+        private static string _userAgent = "BetaSeries.Net/0.0.1";
         private static Dictionary<Type, string> _urlByType = new Dictionary<Type, string>();
         private static string _userToken = null;
 
@@ -105,6 +106,13 @@ namespace BetaSeries.Net
         public static void RegisterDeveloperKey(string key)
         {
             _developerKey = key;
+            OAUTH.RegisterDeveloperKey(key);
+        }
+
+        public static void RegisterDeveloperKey(string key, string oauthsecret)
+        {
+            RegisterDeveloperKey(key);
+            OAUTH.RegisterOAuthSecret(oauthsecret);
         }
 
         public static void RegisterUserToken(string token)
@@ -112,6 +120,10 @@ namespace BetaSeries.Net
             _userToken = token;
         }
 
+        public static void SetUserAgent(string userAgent)
+        {
+            _userAgent = userAgent;
+        }
         #endregion Public Methods
 
         #region Private Methods
@@ -177,6 +189,8 @@ namespace BetaSeries.Net
                 client.BaseAddress = new Uri(_apiBaseUri);
                 client.DefaultRequestHeaders.Add("X-BetaSeries-Key", _developerKey);
                 client.DefaultRequestHeaders.Add("X-BetaSeries-Version", _apiVersion);
+                client.DefaultRequestHeaders.UserAgent.ParseAdd(_userAgent);
+
 
                 //add usertoken
                 if (_userToken != null)
